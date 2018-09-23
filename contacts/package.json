@@ -5,11 +5,13 @@
   "dependencies": {
     "@material-ui/core": "^3.1.0",
     "contentful": "^7.0.3",
+    "escape-string-regexp": "^1.0.5",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-material-ui": "0.0.1",
-    "react-scripts": "1.1.5"
+    "react-scripts": "1.1.5",
+    "sort-by": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
