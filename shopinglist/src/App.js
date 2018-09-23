@@ -4,6 +4,7 @@ import './App.css';
 
 import Form from './components/Form';
 import RemoveButton from './components/RemoveButton';
+import ListItems from './components/ListItems';
 
 class App extends Component {
 
@@ -28,22 +29,26 @@ class App extends Component {
   };
 
   render() {
+
+    const { items } = this.state;
+
     return (
+
       <div className="App">
+
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
+
         <h2>Shopping List</h2>
 
-        <Form addItem={this.addItem}/>
+        <Form addItem={ this.addItem }/>
 
-        <RemoveButton deleteLastItem={this.deleteLastItem} noItemsFound={this.noItemsFound} />
+        <RemoveButton deleteLastItem={ this.deleteLastItem } noItemsFound={ this.noItemsFound } />
 
-        <p className="items">Items</p>
-        <ol className="item-list">
-          {this.state.items.map((item, index) => <li key={index}>{item}</li>)}
-        </ol>
+        <ListItems items={ items }/>
+
       </div>
     );
   }

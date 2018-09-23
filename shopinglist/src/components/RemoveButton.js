@@ -3,8 +3,11 @@ import React, { Component } from 'react';
 class RemoveButtom extends Component {
 
     render() {
+
+        const { deleteLastItem, noItemsFound } = this.props;
+
         return (
-            <button onClick={this.props.deleteLastItem} disabled={this.props.noItemsFound()}>
+            <button onClick={ deleteLastItem } disabled={ noItemsFound() }>
                 Delete Last Item
             </button>
         );

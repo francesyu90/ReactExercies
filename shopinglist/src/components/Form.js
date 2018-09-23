@@ -18,8 +18,10 @@ class Form extends Component {
 
         const { value } = this.state;
 
+        const { addItem } = this.props;
+
         return (
-            <form onSubmit={(event) => this.props.addItem(event, value)}>
+            <form onSubmit={(event) => addItem(event, value)}>
                 <input
                     type="text"
                     placeholder="Enter New Item"
