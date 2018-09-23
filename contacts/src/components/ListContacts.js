@@ -18,7 +18,20 @@ class ListContacts extends Component {
         })
     )
 
+    resetQuery = () => (
+       this.updateQuery('')
+    )
+
     render() {
+
+        const { query } = this.state;
+        const { contacts, removeContact } = this.props;
+
+        const showingContacts = query === '' ? 
+            contacts : 
+            contacts.filter((contact) => {
+                return contact.name.toLowerCase().includes(query.toLowerCase())
+            });
 
         return(
             <div>
@@ -26,13 +39,24 @@ class ListContacts extends Component {
                     <input 
                         type = "text"
                         placeholder = "Search Contacts"
-                        value = {this.state.query}
+                        value = {query}
                         onChange = {(event) => this.updateQuery(event.target.value)}
                     />
-                    {JSON.stringify(this.state)}
+                    {/* {JSON.stringify(this.state)} */}
+                    {/* { showingContacts.length } */}
+                </div>
+                <div>
+                    { showingContacts.length !== contacts.length && (
+                        <div>
+                            <span>
+                                Show {showingContacts.length} of {contacts.length}
+                            </span>
+                            <button onClick={this.resetQuery}>Show all</button>
+                        </div>
+                    )}
                 </div>
                 <ol>
-                    {this.props.contacts.map((contact) => (
+                    {showingContacts.map((contact) => (
                         <li key={contact.id}>
                             {/* <div style ={{
                                 backgroundImage: `url(${contact.avatarURL})`
@@ -41,7 +65,7 @@ class ListContacts extends Component {
                                 <p>{contact.name}</p>
                                 <p>@{contact.handle}</p>
                             </div>
-                            <button onClick={() => this.props.removeContact(contact)} >
+                            <button onClick={() => removeContact(contact)} >
                                 Remove
                             </button>
                         </li>
