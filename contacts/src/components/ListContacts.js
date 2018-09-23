@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 class ListContacts extends Component {
 
     static propTypes = {
-        contacts: PropTypes.array,
-        removeContact: PropTypes.func
+        contacts: PropTypes.array.isRequired,
+        removeContact: PropTypes.func.isRequired
     }
 
     render() {
@@ -31,17 +31,5 @@ class ListContacts extends Component {
     }
 
 }
-
-// const ListContacts = (props) => (
-//     props.contacts.map(contact => (
-//         <li key={contact.id}>
-//             <div>
-//                 <p>{contact.name}</p>
-//                 <p>@{contact.handle}</p>
-//             </div>
-//             <button onClick={() => props.removeContact(contact)}>Remove</button>
-//         </li>
-//     ))
-// );
 
 export default ListContacts;
