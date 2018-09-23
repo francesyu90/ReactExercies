@@ -8,27 +8,26 @@ import ListContacts from './components/ListContacts';
 
 class App extends Component {
 
-  state = {
-      contacts: constants.contacts
-  }
+    static propTypes = {
+        contacts: PropTypes.array,
+        removeContact: PropTypes.func
+    }
 
-  removeContact = (contact) => {
-      this.setState(currentState => ({
+    state = {
+        contacts: constants.contacts
+    }
+
+    removeContact = (contact) => {
+        this.setState(currentState => ({
         contacts: currentState.contacts.filter(c => c.id !== contact.id)
-      }))
-  }
+        }))
+    }
 
-  render() {
-      return  (
-          <ListContacts contacts={this.state.contacts} removeContact={this.removeContact} />
-      );
-    
-  }
-}
-
-App.propTypes = {
-    contacts: PropTypes.array,
-    removeContact: PropTypes.func
+    render() {
+        return  (
+            <ListContacts contacts={this.state.contacts} removeContact={this.removeContact} />
+        );
+    }
 }
 
 export default App;
