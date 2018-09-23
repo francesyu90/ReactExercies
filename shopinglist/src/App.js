@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import Form from './components/Form'
+import Form from './components/Form';
+import RemoveButton from './components/RemoveButton';
 
 class App extends Component {
 
@@ -11,23 +12,19 @@ class App extends Component {
     items: []
   };
 
-  getItem = (item) => {
-    this.setState({item: item});
-  }
-
   addItem = (event, item) => {
     event.preventDefault();
     this.setState(oldState => ({
       items: [...oldState.items, item],
     }));
   };
+  
+  noItemsFound = () => {
+    return this.state.items.length === 0;
+  };
 
   deleteLastItem = event => {
     this.setState(prevState => ({ items: this.state.items.slice(0, -1) }));
-  };
-
-  noItemsFound = () => {
-    return this.state.items.length === 0;
   };
 
   render() {
@@ -41,9 +38,7 @@ class App extends Component {
 
         <Form addItem={this.addItem}/>
 
-        <button onClick={this.deleteLastItem} disabled={this.noItemsFound()}>
-          Delete Last Item
-        </button>
+        <RemoveButton deleteLastItem={this.deleteLastItem} noItemsFound={this.noItemsFound} />
 
         <p className="items">Items</p>
         <ol className="item-list">
