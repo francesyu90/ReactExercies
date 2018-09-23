@@ -27,7 +27,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-    contacts: PropTypes.array.isRequired,
+    contacts: PropTypes.array,
     removeContact: PropTypes.func
 }
 
