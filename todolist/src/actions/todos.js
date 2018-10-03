@@ -8,21 +8,21 @@ function addTodo(todo) {
     return {
         type: ADD_TODO,
         todo
-    }
+    };
 }
 
 function removeTodo(id) {
     return {
         type: REMOVE_TODO,
         id
-    }
+    };
 }
 
 function toggleTodo(id) {
     return {
         type: TOGGLE_TODO,
         id
-    }
+    };
 }
 
 export function handleAddTodo(name, cb) {
@@ -30,28 +30,28 @@ export function handleAddTodo(name, cb) {
         return API.saveTodo(name)
         .then((todo) => {
 
-            dispatch(addTodo(todo))
+            dispatch(addTodo(todo));
             
-            cb
+            cb();
         })
         .catch(() => {
-            alert('There was an error. Try again.')
-        })
+            alert("There was an error. Try again.");
+        });
     }
 }
 
 export function handleDeleteTodo(todo) {
     return (dispatch) => {
 
-        dispatch(removeTodo(todo.id))
+        dispatch(removeTodo(todo.id));
 
         return API.deleteTodo(todo.id)
         .catch(() => {
 
-            dispatch(addTodo(todo))
+            dispatch(addTodo(todo));
 
-            alert('An error occurred. Try again.')
-        })
+            alert("There was an error. Try again.");
+        });
     }
 }
 
@@ -63,9 +63,9 @@ export function handleToggle(id) {
         return API.saveTodoToggle(id)
         .catch(() => {
 
-            dispatch(toggleTodo(id))
+            dispatch(toggleTodo(id));
 
-            alert('An error occurred. Try again.')
-        })
+            alert("There was an error. Try again.");
+        });
     }
 }
