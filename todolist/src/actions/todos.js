@@ -29,7 +29,9 @@ export function handleAddTodo(name, cb) {
     return (dispatch) => {
         return API.saveTodo(name)
         .then((todo) => {
+
             dispatch(addTodo(todo))
+            
             cb
         })
         .catch(() => {
@@ -45,7 +47,9 @@ export function handleDeleteTodo(todo) {
 
         return API.deleteTodo(todo.id)
         .catch(() => {
+
             dispatch(addTodo(todo))
+
             alert('An error occurred. Try again.')
         })
     }
@@ -58,7 +62,9 @@ export function handleToggle(id) {
 
         return API.saveTodoToggle(id)
         .catch(() => {
+
             dispatch(toggleTodo(id))
+
             alert('An error occurred. Try again.')
         })
     }
