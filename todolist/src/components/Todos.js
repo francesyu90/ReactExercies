@@ -58,4 +58,4 @@ class Todos extends Component {
 
 export default connect((state) => ({
     todos: state.todos
-}));
+}))(Todos);
